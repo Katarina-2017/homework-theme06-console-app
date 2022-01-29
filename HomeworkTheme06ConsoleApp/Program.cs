@@ -11,6 +11,7 @@ namespace HomeworkTheme06ConsoleApp
         static void Main(string[] args)
         {
 
+
         }
     }
 }
