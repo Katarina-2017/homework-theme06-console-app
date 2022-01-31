@@ -29,23 +29,33 @@ namespace HomeworkTheme06ConsoleApp
             else
             {
                 Console.WriteLine($"Файл с именем {userFileName} не найден.");
+                ChoiceOfOptions(UserOption());
             }
            
         }
 
-        static void Main(string[] args)
+        static void ChoiceOfOptions(byte option)
+        {
+            switch (option)
+            {
+                case 1: FileRead(); break;
+                case 2: break;
+                default: Console.WriteLine("Вы ввели некорректное значение"); break;
+            }
+        }
+
+        static byte UserOption()
         {
             Console.WriteLine("Выберите один из вариантов работы: " +
                               "\nвведите 1- чтобы вывести данные на экран" +
                               "\nвведите 2 - чтобы заполнить данные и добавить новую запись в конец файла");
             byte userOption = byte.Parse(Console.ReadLine());
+            return userOption;
+        }
 
-            switch (userOption)
-            {
-                case 1:FileRead(); break;
-                case 2:break;
-                default:Console.WriteLine("Вы ввели некорректное значение");break;
-            }
+        static void Main(string[] args)
+        {
+            ChoiceOfOptions(UserOption());
             Console.ReadKey();
         }
     }
