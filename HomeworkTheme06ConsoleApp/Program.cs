@@ -11,8 +11,11 @@ namespace HomeworkTheme06ConsoleApp
     {
         static void FileRead()
         {
-            using (StreamReader sr = new StreamReader("db.txt"))
+            FileInfo userFileName = new FileInfo("db.txt");
+            if (userFileName.Exists)
             {
+                 using (StreamReader sr = new StreamReader("db.txt"))
+                 {
                 string line;
                 Console.WriteLine($"{"ID",4}\t{"Датa и время записи",12}\t{" Ф.И.О.",25}\t{"Возраст",4}\t{"Рост",7}\t{"Датa рождения",12}\t{"Место рождения"}");
 
@@ -21,7 +24,13 @@ namespace HomeworkTheme06ConsoleApp
                     string[] employees = line.Split('#');
                     Console.WriteLine($"{employees[0],4}\t{employees[1],12}\t{employees[2],25}\t{employees[3],4}\t{employees[4],7}\t{employees[5],12}\t{employees[6]}");
                 }
+                 }
             }
+            else
+            {
+                Console.WriteLine($"Файл с именем {userFileName} не найден.");
+            }
+           
         }
 
         static void Main(string[] args)
