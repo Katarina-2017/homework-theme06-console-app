@@ -14,12 +14,12 @@ namespace HomeworkTheme06ConsoleApp
             using (StreamReader sr = new StreamReader("db.txt"))
             {
                 string line;
-                Console.WriteLine($"{"ID"}\t{"Датa и время записи"}\t{" Ф.И.О.",20}\t{"Возраст"}\t{"Рост"}\t{"Датa рождения"}\t{"Место рождения"}");
+                Console.WriteLine($"{"ID",4}\t{"Датa и время записи",12}\t{" Ф.И.О.",25}\t{"Возраст",4}\t{"Рост",7}\t{"Датa рождения",12}\t{"Место рождения"}");
 
                 while ((line = sr.ReadLine()) != null)
                 {
                     string[] employees = line.Split('#');
-                    Console.WriteLine($"{employees[0]}\t{employees[1]}\t{employees[2]}\t{employees[3]}\t{employees[4]}\t{employees[5]}\t{employees[6]}");
+                    Console.WriteLine($"{employees[0],4}\t{employees[1],12}\t{employees[2],25}\t{employees[3],4}\t{employees[4],7}\t{employees[5],12}\t{employees[6]}");
                 }
             }
         }
