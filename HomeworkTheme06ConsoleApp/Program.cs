@@ -91,14 +91,19 @@ namespace HomeworkTheme06ConsoleApp
                         note += $"{Console.ReadLine()}";
 
                         sw.WriteLine(note);
-                        Console.WriteLine("Продожить н/д"); key = Console.ReadKey(true).KeyChar;
+                        Console.WriteLine("Продолжить н/д"); key = Console.ReadKey(true).KeyChar;
                     } while (char.ToLower(key) == 'н');
                 }
                 ChoiceOfOptions(UserOption());
             }
             else
             {
-                
+                string fileName = "db.txt";
+                using (File.Create(fileName))
+                {
+                    Console.WriteLine($"Файл {fileName} был успешно создан.");
+                }
+                ChoiceOfOptions(UserOption());
             }
         }
 
