@@ -5,10 +5,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+/// <summary>
+/// Пространство имен
+/// </summary>
 namespace HomeworkTheme06ConsoleApp
 {
+    /// <summary>
+    /// Главная составляющая единица приложения - класс
+    /// </summary>
     class Program
     {
+        /// <summary>
+        /// Метод, считывающий вариант работы приложения
+        /// </summary>
+        /// <returns>Целое число в диапазоне byte</returns>
         static byte UserOption()
         {
             Console.WriteLine("Выберите один из вариантов работы: " +
@@ -17,6 +27,11 @@ namespace HomeworkTheme06ConsoleApp
             byte userOption = byte.Parse(Console.ReadLine());
             return userOption;
         }
+
+        /// <summary>
+        /// Метод выбора одного из вариантов работы приложения
+        /// </summary>
+        /// <param name="option">Целое число в диапазоне byte</param>
         static void ChoiceOfOptions(byte option)
         {
             switch (option)
@@ -29,10 +44,14 @@ namespace HomeworkTheme06ConsoleApp
             }
         }
 
+        /// <summary>
+        /// Метод, считывающий информацию из файла db.txt
+        /// </summary>
         static void FileRead()
         {
             FileInfo userFileName = new FileInfo("db.txt");
-            if (userFileName.Exists)
+
+            if (userFileName.Exists)    //если файл существует, то считываем из него информацию
             {
                  using (StreamReader sr = new StreamReader("db.txt"))
                  {
@@ -46,18 +65,22 @@ namespace HomeworkTheme06ConsoleApp
                 }
                  }
             }
-            else
+            else      //иначе выводим соответсвующее сообщение 
             {
                 Console.WriteLine($"Файл с именем {userFileName} не найден.");
                 ChoiceOfOptions(UserOption());
             }
            
         }
-
+        
+        /// <summary>
+        /// Метод для записи информации в файл
+        /// </summary>
         static void FileWrite()
         {
             FileInfo userFileName = new FileInfo("db.txt");
-            if (userFileName.Exists)
+
+            if (userFileName.Exists)    //если файл существует, то записываем новую строку в конец файла
             {
                 using (StreamWriter sw = new StreamWriter("db.txt",true))
                 {
@@ -96,9 +119,10 @@ namespace HomeworkTheme06ConsoleApp
                 }
                 ChoiceOfOptions(UserOption());
             }
-            else
+            else      //иначе, создаем файл с именем db.txt в текущей директории
             {
                 string fileName = "db.txt";
+
                 using (File.Create(fileName))
                 {
                     Console.WriteLine($"Файл {fileName} был успешно создан.");
@@ -106,7 +130,11 @@ namespace HomeworkTheme06ConsoleApp
                 ChoiceOfOptions(UserOption());
             }
         }
-
+        
+        /// <summary>
+        /// Точка входа в приложение
+        /// </summary>
+        /// <param name="args">Параметры запуска</param>
         static void Main(string[] args)
         {
             ChoiceOfOptions(UserOption());
